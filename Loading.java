@@ -141,6 +141,7 @@ public class Loading extends javax.swing.JFrame implements Runnable{
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
