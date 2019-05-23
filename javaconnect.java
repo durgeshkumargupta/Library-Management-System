@@ -8,7 +8,6 @@
  *
  * @author Durgesh
  */
-import org.sqlite.JDBC;
 import java.sql.*;
 import javax.swing.JOptionPane;
 public class javaconnect {
@@ -32,4 +31,4 @@ public class javaconnect {
         }
     }
 }
-       
+        
