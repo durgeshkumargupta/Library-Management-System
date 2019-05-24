@@ -23,7 +23,7 @@ public class Book_Update extends javax.swing.JFrame {
      * Creates new form Book_Update
      */
     public Book_Update() {
-         super("Return Update");
+         super("Book Update");
         initComponents();
          conn=javaconnect.ConnecrDb();
     }
