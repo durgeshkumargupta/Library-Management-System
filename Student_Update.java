@@ -21,7 +21,7 @@ public class Student_Update extends javax.swing.JFrame {
      * Creates new form Student_Update
      */
     public Student_Update() {
-         super("Return Update");
+         super("Student Update");
         initComponents();
         conn=javaconnect.ConnecrDb();
     }
