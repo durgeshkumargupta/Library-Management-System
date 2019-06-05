@@ -18,15 +18,12 @@ public class javaconnect {
         {
             System.out.println("Conneted ");
           Class.forName("org.sqlite.JDBC");  
-          System.out.println("Conneted 1");
            Connection conn=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Durgesh\\Documents\\NetBeansProjects\\Libarary Management System\\LibraryNew.db");
-          System.out.println("Conneted 2");
           return conn;
         }catch(Exception e)
         {
             
             JOptionPane.showMessageDialog(null,e);
-            System.out.println("Conneted 3");
             return null;
         }
     }
