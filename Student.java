@@ -2,6 +2,8 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /*
@@ -39,7 +41,6 @@ public class Student extends javax.swing.JFrame {
             String qry="select Student_Id from Student ORDER BY Student_Id DESC LIMIT 1";
             pst=conn.prepareStatement(qry);
             rs=pst.executeQuery();
-            
           if(rs.next())
             {
                 String rl=rs.getString("Student_Id");
@@ -62,6 +63,8 @@ public class Student extends javax.swing.JFrame {
       }
     }
     
+    
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
