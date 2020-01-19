@@ -1,6 +1,8 @@
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /*
@@ -79,7 +81,7 @@ public class Book_Update extends javax.swing.JFrame {
             try{
                 rs.close();
                 pst.close();
-            }catch(Exception e)
+            }catch(SQLException e)
             {
                 
             }
@@ -95,7 +97,7 @@ public class Book_Update extends javax.swing.JFrame {
             pst.setString(1,jTextField1.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null,"Record Delete");
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -500,14 +502,14 @@ public class Book_Update extends javax.swing.JFrame {
            {
              JOptionPane.showMessageDialog(null,"Book is Not Available");  
            }
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }finally{
             try{
                 rs.close();
                 pst.close();
-            }catch(Exception e)
+            }catch(SQLException e)
             {
                 
             }
@@ -605,10 +607,8 @@ public class Book_Update extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Book_Update().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Book_Update().setVisible(true);
         });
     }
 
