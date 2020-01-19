@@ -1,7 +1,9 @@
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -36,7 +38,7 @@ public class Return extends javax.swing.JFrame {
             pst=conn.prepareStatement(sql);
             pst.setString(1,Student_Id.getText());
             pst.execute();
-        }catch(Exception e)
+        }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -98,7 +100,7 @@ public class Return extends javax.swing.JFrame {
             remark.setText("");
             dues.setText("");
             ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).setText("");
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
              JOptionPane.showMessageDialog(null, e);
         }
@@ -662,14 +664,14 @@ public class Return extends javax.swing.JFrame {
                 {
                     JOptionPane.showMessageDialog(null,"Acc Number not Issue with this Student ID");
                 }
-            }catch(Exception e)
+            }catch(HeadlessException | SQLException e)
             {
                 JOptionPane.showMessageDialog(null,e);
             }finally{
                 try{
                     rs.close();
                     pst.close();
-                }catch(Exception e)
+                }catch(SQLException e)
                 {
 
                 }
@@ -741,10 +743,8 @@ public class Return extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Return().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Return().setVisible(true);
         });
     }
 
