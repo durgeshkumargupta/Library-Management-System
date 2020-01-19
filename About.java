@@ -170,10 +170,8 @@ public class About extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new About().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new About().setVisible(true);
         });
     }
 
