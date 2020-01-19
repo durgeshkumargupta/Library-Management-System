@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -15,7 +16,7 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Durgesh
  */
-public class Statistics extends javax.swing.JFrame {
+public final class Statistics extends javax.swing.JFrame {
 
     Connection conn;
     ResultSet rs;
@@ -39,7 +40,7 @@ public class Statistics extends javax.swing.JFrame {
             rs=pst.executeQuery();
             Issue_Details.setModel(DbUtils.resultSetToTableModel(rs));
             
-        }catch(Exception e)
+        }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }
@@ -53,7 +54,7 @@ public class Statistics extends javax.swing.JFrame {
             rs=pst.executeQuery();
             Return_Detalis.setModel(DbUtils.resultSetToTableModel(rs));
             
-        }catch(Exception e)
+        }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }
@@ -215,10 +216,8 @@ public class Statistics extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Statistics().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Statistics().setVisible(true);
         });
     }
 
