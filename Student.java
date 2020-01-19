@@ -1,7 +1,9 @@
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -16,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author Durgesh
  */
-public class Student extends javax.swing.JFrame {
+public final class Student extends javax.swing.JFrame {
 
      Connection conn;
     ResultSet rs;
@@ -58,7 +60,7 @@ public class Student extends javax.swing.JFrame {
         
             pst.close();
             rs.close();
-        }catch(Exception e){
+        }catch(NumberFormatException | SQLException e){
         JOptionPane.showMessageDialog(null,e);  
       }
     }
@@ -285,7 +287,7 @@ public class Student extends javax.swing.JFrame {
                 jTextField3.setText("");
                 jTextField4.setText("");
                 
-        }catch(Exception e)
+        }catch( HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }
@@ -324,10 +326,8 @@ public class Student extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Student().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Student().setVisible(true);
         });
     }
 
