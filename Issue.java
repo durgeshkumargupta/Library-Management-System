@@ -1,7 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+/**
+ *
+ * @author Durgesh
+ */
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -572,14 +583,14 @@ public class Issue extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null,"Acc Number is Not Available");
             }
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }finally{
             try{
                 rs.close();
                 pst.close();
-            }catch(Exception e)
+            }catch(SQLException e)
             {
                 
             }
@@ -632,7 +643,7 @@ public class Issue extends javax.swing.JFrame {
             {
                JOptionPane.showMessageDialog(null,"Student Id Not Found");  
             }
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }
@@ -641,7 +652,7 @@ public class Issue extends javax.swing.JFrame {
             {
                 rs.close();
                 pst.close();
-            }catch(Exception e)
+            }catch(SQLException e)
             {
                 
             }
@@ -716,7 +727,7 @@ public class Issue extends javax.swing.JFrame {
             remark.setText("");
             ((JTextField)jDateChooser1.getDateEditor().getUiComponent()).setText("");
         
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }
@@ -763,10 +774,8 @@ public class Issue extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Issue().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Issue().setVisible(true);
         });
     }
 
