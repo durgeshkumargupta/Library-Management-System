@@ -1,7 +1,9 @@
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /*
@@ -45,7 +47,7 @@ public class Forgot extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null,"Incorrect Username");
         }
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }
@@ -64,7 +66,7 @@ public class Forgot extends javax.swing.JFrame {
                 rs.close();
                 pst.close();
              }
-        }catch(Exception e){
+        }catch(SQLException e){
           JOptionPane.showMessageDialog(null,e);  
         }
     }
@@ -284,10 +286,8 @@ public class Forgot extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Forgot().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Forgot().setVisible(true);
         });
     }
 
