@@ -8,9 +8,11 @@
  *
  * @author Durgesh
  */
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 public class Signup extends javax.swing.JFrame {
 
@@ -205,7 +207,7 @@ public class Signup extends javax.swing.JFrame {
             pst.execute();
             JOptionPane.showMessageDialog(null,"New Account Created");
             
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,"Aready exist Please enter unique Id");
 
@@ -223,6 +225,7 @@ public class Signup extends javax.swing.JFrame {
 
     /**
      * @param args the command line arguments
+     * @throws java.lang.Exception
      */
     public static void main(String args[]) throws Exception{
         /* Set the Nimbus look and feel */
@@ -249,10 +252,8 @@ public class Signup extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Signup().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Signup().setVisible(true);
         });
     }
 
