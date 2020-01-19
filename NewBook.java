@@ -1,7 +1,9 @@
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /*
@@ -54,7 +56,7 @@ public class NewBook extends javax.swing.JFrame {
             }
             pst.close();
             rs.close();
-        }catch(Exception e){
+        }catch(NumberFormatException | SQLException e){
         JOptionPane.showMessageDialog(null,e);  
       }
     }
@@ -423,7 +425,7 @@ public class NewBook extends javax.swing.JFrame {
                 subject.setText("");
                 length.setText("");
                 remark.setText("");
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }
@@ -466,10 +468,8 @@ public class NewBook extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewBook().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new NewBook().setVisible(true);
         });
     }
 
