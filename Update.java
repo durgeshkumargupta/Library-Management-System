@@ -158,10 +158,8 @@ public class Update extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Update().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Update().setVisible(true);
         });
     }
 
