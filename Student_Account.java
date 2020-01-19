@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -15,7 +16,7 @@ import net.proteanit.sql.DbUtils;
  *
  * @author Durgesh
  */
-public class Student_Account extends javax.swing.JFrame {
+public final class Student_Account extends javax.swing.JFrame {
 
      Connection conn;
     ResultSet rs;
@@ -38,7 +39,7 @@ public class Student_Account extends javax.swing.JFrame {
             rs=pst.executeQuery();
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             
-        }catch(Exception e)
+        }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }
@@ -162,10 +163,8 @@ public class Student_Account extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Student_Account().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Student_Account().setVisible(true);
         });
     }
 
