@@ -1,8 +1,9 @@
-
-import com.sun.glass.events.KeyEvent;
+import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -210,7 +211,7 @@ public class Login extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,"Incorrect Username and password");
              }
           
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }finally{
@@ -218,7 +219,7 @@ public class Login extends javax.swing.JFrame {
             rs.close();
             pst.close();
             
-        }catch(Exception e)
+        }catch(SQLException e)
                 {
                 
                 }
@@ -275,7 +276,7 @@ public class Login extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,"Incorrect Username and password");
              }
           
-        }catch(Exception e)
+        }catch(HeadlessException | SQLException e)
         {
             JOptionPane.showMessageDialog(null,e);
         }finally{
@@ -283,7 +284,7 @@ public class Login extends javax.swing.JFrame {
             rs.close();
             pst.close();
             
-        }catch(Exception e)
+        }catch(SQLException e)
                 {
                 
                 }
@@ -325,10 +326,8 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 
